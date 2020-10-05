@@ -60,18 +60,6 @@ variable "cpu_credits" {
   default     = ""
 }
 
-variable "access_priv" {
-  type = string
-  description = ""
-  default = "~/zabbix-terraform/keys/id_rsa"
-}
-
-variable "path_dir_clone_repo" {
-  type = string
-  description = ""
-  default = "~/zabbix-terraform/keys/keys_acesso.zip"
-}
-
 variable "path_script" {
   type = string
   description = ""

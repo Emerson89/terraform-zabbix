@@ -82,11 +82,6 @@ ebs_optimized = var.ebs_optimized
       "chmod 400 ~/.ssh/id_rsa",
     ]
   }
-    
-  provisioner "file" {
-    source = var.path_dir_clone_repo
-    destination = "/tmp/keys_acesso.zip"
-  }
 
 	provisioner "file" {
     source = var.path_script
