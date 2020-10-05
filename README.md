@@ -4,7 +4,7 @@ Módulo exemplo para provisionamento
 
 ```hcl
 module "ec2" {
-  source = "../../zabbix-terraform/"
+  source = "../../terraform-zabbix/"
 
   profile = "Custom_profile"
   ami = "ami-02e98f78"
@@ -12,8 +12,8 @@ module "ec2" {
   region = "us-east-1"
   key_name = "my-key"
 
-  vpc_id = "vpc-0cd8625b696f397da"
-  subnet_id = "subnet-0ca9315f57b69b0a0"
+  vpc_id = "vpc-id"
+  subnet_id = "subnet-id"
     
   ebs_block_device = [{
     device_name         = "/dev/sda1"
@@ -22,8 +22,6 @@ module "ec2" {
   }]
 }
 ```
-## O Arquivo script.sh conta com parametros para alteração da Senha do Console e Banco, default é padrão zabbix
-
 ### Créditos de CPU
 
 Caso a instância seja do tipo T2 ou T3, a variável `cpu_credits` pode ser usada
@@ -68,15 +66,11 @@ module "ec2" {
 | private\_ip | IP privado da instância na VPC | `string` | `""` | no |
 | root\_block\_device | Lista com maps de configuração do volume raiz da instância | `list` | n/a | no |
 | source\_dest\_check | Controla se o tráfego é roteado para a instância quando o endereço de destino não é o mesmo da instância | `bool` | `true` | no |
-| subnet\_id | ID da subnet onde a instância será provisionada | `string` | `""` | no |
+| subnet\_id | ID da subnet onde a instância será provisionada | `string` | `""` | yes |
 | subnet\_ids | Lista com IDs das subnets onde a instância será provisionada | `list` | `[]` | no |
+| vpc\_id | ID da vpc onde a instância será provisionada | `string` | `""` | yes |
 | tags | Map de tags da instância e dos volumes | `map` | `{}` | no |
 | user\_data | User data utilizado ao provisionar a instância | `string` | `""` | no |
 
-## Acesso a instância com AWS SSM Session Manager
-
-Para acessar a instância com o SSM é preciso instalar o [Plugin](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html) do session manager e utilizar a [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/ssm/start-session.html) ou utilizar o [console](https://console.aws.amazon.com/systems-manager/session-manager) da AWS.
-
 ## Licença
-
-Copyright © 2020 Mandic Cloud Solutions. Todos os direitos reservados.
+GLPv3
