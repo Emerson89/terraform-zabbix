@@ -40,7 +40,7 @@ variable "key_name" {
 variable "private_key_path" {
   type = string
   description = "Chave private para acesso a instância"
-  default = "~/zabbix-terraform/keys/id_rsa"
+  default = "~/terraform-zabbix/keys/id_rsa"
 }
 
 variable "users" {
@@ -52,7 +52,7 @@ variable "users" {
 variable "public_key_path" {
   type = string
   description = "Chave public que será armazenada na instância"
-  default = "~/zabbix-terraform/keys/id_rsa.pub"
+  default = "~/terraform-zabbix/keys/id_rsa.pub"
 }
 
 variable "cpu_credits" {
@@ -63,7 +63,7 @@ variable "cpu_credits" {
 variable "path_script" {
   type = string
   description = ""
-  default = "~/zabbix-terraform/script.sh"
+  default = "~/terraform-zabbix/script.sh"
 }
 
 variable "ebs_optimized" {
