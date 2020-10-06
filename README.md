@@ -29,6 +29,11 @@ module "ec2" {
   }]
 }
 ```
+```
+terraform init
+terraform plan
+terraform apply
+```
 ### CPU Credits
 
 If the instance is of type T2 or T3, the variable `cpu_credits` can be used
