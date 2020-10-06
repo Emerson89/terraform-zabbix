@@ -60,6 +60,12 @@ variable "cpu_credits" {
   default     = ""
 }
 
+variable "access_priv" {
+  type = string
+  description = ""
+  default = "~/terraform-zabbix/keys/id_rsa"
+}
+
 variable "path_script" {
   type = string
   description = ""

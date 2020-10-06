@@ -14,7 +14,7 @@ echo
 echo =========================="Fazendo as configurações necessárias..."====================================
 echo
  cd /tmp
- git clone git@github.com:Emerson89/zabbix-server.git
+ git clone https://github.com/Emerson89/zabbix-server.git
  cd zabbix-server
 echo
 echo =========================="Executando receita ansible..."=============================================

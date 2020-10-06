@@ -10,7 +10,7 @@ resource "aws_security_group" "allow_sec" {
       from_port   = port.value
       to_port     = port.value
       protocol    = "tcp"
-      cidr_blocks = [0.0.0.0/0]
+      cidr_blocks = ["0.0.0.0/0"]
     }
   }
 
@@ -33,7 +33,7 @@ tags = {
 resource "aws_instance" "zabbix" {
 	ami = var.ami
 	instance_type = var.instance_type
-	key_name = "${aws_key_pair.my-key.key_name}"
+	key_name = aws_key_pair.my-key.key_name
 	security_groups = ["${aws_security_group.allow_sec.id}"]
   subnet_id = var.subnet_id
 
