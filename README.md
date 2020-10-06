@@ -1,6 +1,13 @@
-# Módulo Terraform - AWS - EC2
+# Provisioning zabbix-server using Terraform - AWS
 
-Módulo exemplo para provisionamento
+![Badge](https://img.shields.io/badge/terraform-zabbix-red)
+
+## Dependencies
+![Badge](https://img.shields.io/badge/AWS%20-Access--key-blue)
+
+## Terraform Module - AWS - EC2
+
+Example module for provisioning, pay attention to the PATH of the cloned repository on your machine in source
 
 ```hcl
 module "ec2" {
@@ -22,10 +29,10 @@ module "ec2" {
   }]
 }
 ```
-### Créditos de CPU
+### CPU Credits
 
-Caso a instância seja do tipo T2 ou T3, a variável `cpu_credits` pode ser usada
-para habilitar o modo [T2/T3 Unlimited][t-unlimited-docs]:
+If the instance is of type T2 or T3, the variable `cpu_credits` can be used
+to enable [T2 / T3 Unlimited] mode[t-unlimited-docs]:
 
 ```hcl
 module "ec2" {
