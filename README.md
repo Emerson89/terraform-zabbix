@@ -70,9 +70,8 @@ module "ec2" {
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| aws | n/a |
+* provider.aws: version = "~> 3.9"
+* provider.tls: version = "~> 2.2"
 
 ## Inputs
 
