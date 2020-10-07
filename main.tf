@@ -30,10 +30,20 @@ tags = {
   }
 }
 
+resource "tls_private_key" "key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+resource "aws_key_pair" "generated_key" {
+  key_name   = var.key_name
+  public_key = tls_private_key.key.public_key_openssh
+}
+
 resource "aws_instance" "zabbix" {
 	ami = var.ami
 	instance_type = var.instance_type
-	key_name = aws_key_pair.my-key.key_name
+	key_name      = aws_key_pair.generated_key.key_name
 	security_groups = ["${aws_security_group.allow_sec.id}"]
   subnet_id = var.subnet_id
 
@@ -64,39 +74,28 @@ ebs_optimized = var.ebs_optimized
     cpu_credits = var.cpu_credits
   }
 
-	connection {
-    type = "ssh"
-    user = var.users[0]
-    private_key = file(var.access_priv)
-    host = self.public_ip
-    timeout = "2m"
-  }
-
-    provisioner "file" {
-     source = var.access_priv
-     destination = "~/.ssh/id_rsa"
+  connection {
+    type  = "ssh"
+    private_key = tls_private_key.key.private_key_pem
+    host  = self.public_ip
+    user  = var.users[0]
+    port  = 22
+    agent = true
   }
   
-    provisioner "remote-exec" {
-    inline = [
-      "chmod 400 ~/.ssh/id_rsa",
-    ]
-  }
-
 	provisioner "file" {
     source = var.path_script
     destination = "/tmp/script.sh"
   }
 
-    provisioner "remote-exec" {
+  provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/script.sh",
       "/tmp/script.sh args",
     ]
   }
-}
 
-resource "aws_key_pair" "my-key" {
-	key_name = var.key_name
-	public_key = file(var.public_key_path)
+  provisioner "local-exec" {
+    command = "echo '${tls_private_key.key.private_key_pem}' > ${var.key_name}.pem" 
+  } 
 }

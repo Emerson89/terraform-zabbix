@@ -1,6 +1,7 @@
 # Provisioning zabbix-server using Terraform - AWS
 
 ![Badge](https://img.shields.io/badge/terraform-zabbix-red)
+![Badge](https://img.shields.io/badge/aws-zabbix-red)
 
 ## Dependencies
 ![Badge](https://img.shields.io/badge/AWS%20-Access--key-blue)
