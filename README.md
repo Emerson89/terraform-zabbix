@@ -78,6 +78,7 @@ module "ec2" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | ami | ID da AMI usada para provisionar a instância | `any` | n/a | yes |
+| users | Lista de users | `list` | `centos` | no |
 | cpu\_credits | Opção de créditos de CPU da instância ("unlimited" ou "standard") | `string` | `"standard"` | no |
 | disable\_api\_termination | Controla a proteção de destruição (terminate) da instância | `bool` | `true` | no |
 | ebs\_block\_device | Lista com maps de configuração de volumes adicionais da instância | `list` | `[]` | yes |
