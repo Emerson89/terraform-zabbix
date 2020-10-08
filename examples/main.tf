@@ -1,5 +1,5 @@
 module "ec2" {
-  source = "../terraform-zabbix/"
+  source = "../"
   
   name = "Zabbix-server by terraform"
   profile = "CustomProfile"
