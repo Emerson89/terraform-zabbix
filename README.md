@@ -5,6 +5,7 @@
 
 ## Dependencies
 ![Badge](https://img.shields.io/badge/AWS%20-Access--key-blue)
+![Badge](https://img.shields.io/badge/centos-7-blue)
 
 ## Terraform Module - AWS - EC2
 
